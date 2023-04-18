@@ -353,14 +353,15 @@ class PrimitiveNet(nn.Module):
         self.opt = opt
         
         input_feature_dim = 3 if self.opt.input_normal else 0
+        mode = 5 if self.opt.input_normal else 0
 
         if self.opt.backbone == 'DGCNN':
             self.affinitynet = PrimitivesEmbeddingDGCNGn(
                                                     opt=opt,
                                                     emb_size=self.opt.out_dim,
                                                     num_primitives=10,
-                                                    mode=5,
-                                                    num_channels=6,
+                                                    mode=mode,
+                                                    num_channels=3 + input_feature_dim,
                                                     )
     
     def forward(self, xyz, normal, inds=None, postprocess=False):
