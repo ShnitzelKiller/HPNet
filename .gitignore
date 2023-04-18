@@ -1,0 +1,13 @@
+.ipynb_checkpoints/
+1_normals.txt
+1_points.txt
+__pycache__/
+abc_normal.tar
+dataloader/__pycache__/
+*~
+inputs/
+log*
+models/__pycache__/
+outputs/
+src/__pycache__/
+utils/__pycache__/
