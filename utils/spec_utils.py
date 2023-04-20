@@ -148,7 +148,7 @@ def pca_torch(X):
     # TODO 2Change this to do SVD, because it is stable and computationally
     # less intensive.
     covariance = torch.transpose(X, 1, 0) @ X
-    S, U = torch.eig(covariance, eigenvectors=True)
+    S, U = torch.linalg.eig(covariance)
     return S, U
 
 def rotation_matrix_a_to_b(A, B):
@@ -196,7 +196,7 @@ def standardize_point_torch(point, weights):
 
     # take only very confident points to compute PCA direction.
     S, U = pca_torch(point[higher_indices])
-    smallest_ev = U[:, torch.min(S[:, 0], 0)[1]].data.cpu().numpy()
+    smallest_ev = U[:, torch.min(S.real, 0)[1]].data.cpu().numpy()
 
     R = rotation_matrix_a_to_b(smallest_ev, np.array([1, 0, 0]))
 

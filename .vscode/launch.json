@@ -11,12 +11,15 @@
             "program": "${workspaceFolder}/train.py",
             "console": "integratedTerminal",
             "justMyCode": true,
-            "envFile": "dev.env",
+            "cwd": "${workspaceFolder}",
+            "envFile": "${workspaceFolder}/dev.env",
             "args":[
                 "--eval",
                 "--checkpoint_path=./abc_normal.tar",
                 "--val_skip=100",
-                "--data_path=/projects/grail/jamesn8nb/dataset_archives/ABC_final/"
+                "--data_path=/projects/grail/jamesn8nb/dataset_archives/ABC_final/",
+                "--log_dir=./log_debug/test",
+                "--input_normal=1"
             ]
         }
     ]

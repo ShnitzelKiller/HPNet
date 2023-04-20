@@ -1,15 +1,24 @@
-name: hpnet
+name: hpnet-updated
 channels:
+  - defaults
   - pytorch
   - nvidia
   - conda-forge
   - anaconda
   - orbingol
+  - xformers
 dependencies:
-  - python
-  - numpy=1.19.2
-  - pytorch=1.7.0
-  - tensorflow=1.15.0
+  - python=3.9
+  - numpy
+  - pytorch::pytorch=2.0.0
+  - pytorch::pytorch-cuda=11.7.0
+  - pytorch::torchvision=0.15.0
+  - tensorboard
+  - omegaconf
+  - torchmetrics=0.10.3
+  - fvcore
+  - iopath
+  - xformers::xformers=0.0.18
   - transforms3d
   - h5py
   - trimesh
@@ -20,10 +29,8 @@ dependencies:
   - matplotlib==3.3.3
   - pip
   - pip:
-    - torch_scatter==2.0.6
+    - torch_scatter
     - lapsolver==1.1.0
-    - pytorch_utils==0.5.5
-    - open3d==0.11.2
+    - open3d
     - ipdb==0.12.3
     - lap==0.4.0
-    - scikit-learn==0.24.2
