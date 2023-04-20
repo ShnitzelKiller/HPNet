@@ -95,7 +95,7 @@ parser.add_argument('--train_fold',
                     default=1)
 parser.add_argument('--eval_interval',
                     type=int,
-                    default=3,
+                    default=50,
                     help='evaluation interval')
 parser.add_argument('--save_interval',
                     type=int,
