@@ -366,11 +366,18 @@ class PrimitiveNet(nn.Module):
     
     def forward(self, xyz, normal, inds=None, postprocess=False):
 
-        feat_spec_embedding, T_pred, normal_per_point, T_param_pred, subidx = self.affinitynet(
-                xyz.transpose(1, 2).contiguous(),
-                normal.transpose(1, 2).contiguous(),
-                inds=inds,
-                postprocess=postprocess)
+        if self.opt.input_normal:
+            feat_spec_embedding, T_pred, normal_per_point, T_param_pred, subidx = self.affinitynet(
+                    xyz.transpose(1, 2).contiguous(),
+                    normal.transpose(1, 2).contiguous(),
+                    inds=inds,
+                    postprocess=postprocess)
+        else:
+            feat_spec_embedding, T_pred, T_param_pred, subidx = self.affinitynet(
+                    xyz.transpose(1, 2).contiguous(),
+                    normal.transpose(1, 2).contiguous(),
+                    inds=inds,
+                    postprocess=postprocess)
 
         if self.opt.input_normal:
             return feat_spec_embedding, T_pred, normal_per_point, T_param_pred, subidx

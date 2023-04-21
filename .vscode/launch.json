@@ -16,10 +16,26 @@
             "args":[
                 "--eval",
                 "--checkpoint_path=./abc_normal.tar",
-                "--val_skip=100",
                 "--data_path=/projects/grail/jamesn8nb/dataset_archives/ABC_final/",
                 "--log_dir=./log_debug/test",
                 "--input_normal=1"
+            ]
+        },
+        {
+            "name": "test pretrained (no normals)",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/train.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}",
+            "envFile": "${workspaceFolder}/dev.env",
+            "args":[
+                "--eval",
+                //"--checkpoint_path=./abc_normal.tar",
+                "--data_path=/projects/grail/jamesn8nb/dataset_archives/ABC_final/",
+                "--log_dir=./log_debug/test_no_normals",
+                "--input_normal=0"
             ]
         }
     ]
